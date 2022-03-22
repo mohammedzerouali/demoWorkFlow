@@ -19,7 +19,7 @@ jobs:
       run: |
            npm ci
            npm run build --if-presentnpm test
-           npm test
+           
   test:
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
       with:
         node-version: '16.13'
         cache: 'npm'
-    - name: build and run unittest
+    - name: unit test
       run: npm test
 
     
