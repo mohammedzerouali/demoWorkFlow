@@ -18,19 +18,21 @@ jobs:
     - name: build and run unittest
       run: |
            npm ci
-           npm run build 
+           npm run build --if-present
+           npm test
            
-  test:
+  sonarcloud:
     runs-on: ubuntu-latest
+    name: sonarCloud
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 16.13
-      uses: actions/setup-node@v2
       with:
-        node-version: '16.13'
-        cache: 'npm'
-    - name: unit test
-      run: npm test
+        fetch-depth: 0
+    - name: sonar cloud scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     
   
