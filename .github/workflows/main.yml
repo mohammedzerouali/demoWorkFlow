@@ -20,6 +20,17 @@ jobs:
            npm ci
            npm run build --if-presentnpm test
            npm test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16.13
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.13'
+        cache: 'npm'
+    - name: build and run unittest
+      run: npm test
 
     
   
