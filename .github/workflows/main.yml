@@ -18,7 +18,6 @@ jobs:
     - name: build and run unittest
       run: |
            npm ci
-           cd my/directory
            npm run build --if-presentnpm test
            npm test
 
